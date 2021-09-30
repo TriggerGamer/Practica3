@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org" lang='es' xml:lang="es">
+
+	<head>
+
+		<meta charset='utf-8'> 
+		<meta name="author" content="Erick José Jáquez Encarnación">
+		<link rel="stylesheet" th:href="@{/css/bootstrap(Sketchy).css}">
+		<meta name="viewport" content="width=device-width">
+		<title> Practica 3 Quizz </title>
+
+	</head>
+
+	<body>
+		<h1> ¿Que Personaje de "The Witcher" eres? </h1>
+		<h3> Pregunta 3 </h3>
+
+		<form th:action="@{/Quiz3}" method="POST">
+
+			<p> ¿Que Paisaje te gusta más? </p>
+			<input class="small" type="radio" name="paisajes" value="1"> Montaña Nevada <br>
+			<input class="small" type="radio" name="paisajes" value="2"> Mar adentro <br>
+			<input class="small" type="radio" name="paisajes" value="3"> Playa <br>
+			<input class="small" type="radio" name="paisajes" value="4"> Gran Ciudad <br>
+			<input class="small" type="radio" name="paisajes" value="5"> Bosque <br>
+			<input class="small" type="radio" name="paisajes" value="6"> Pradera <br>
+
+			<br>
+
+			<fieldset> 
+				<legend> Enviar Respuesta </legend>
+				<p> ¿Estás seguro de tú respuesta? </p>
+
+				<input type="Submit" value="Si">
+				<input type="Reset" value="No">
+			</fieldset>
+
+		</form>
+	</body>
+</html>

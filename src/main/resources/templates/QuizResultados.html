@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org" lang='es' xml:lang="es">
+
+	<head>
+
+		<meta charset='utf-8'> 
+		<meta name="author" content="Erick José Jáquez Encarnación">
+		<link rel="stylesheet" th:href="@{/css/bootstrap(Sketchy).css}">
+		<meta name="viewport" content="width=device-width">
+		<title> Practica 3 Quizz Resultados </title>
+
+	</head>
+
+	<body>
+		<h1> ¿Que Personaje de "The Witcher" eres? </h1>
+		<h3> Resultados </h3>
+
+		<form th:action="@{/QuizResultados}" method="POST">
+			<p th:text="${accion}"> </p>
+		</form>
+	</body>
+</html>

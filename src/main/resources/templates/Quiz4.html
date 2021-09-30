@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org" lang='es' xml:lang="es">
+
+	<head>
+
+		<meta charset='utf-8'> 
+		<meta name="author" content="Erick José Jáquez Encarnación">
+		<link rel="stylesheet" th:href="@{/css/bootstrap(Sketchy).css}">
+		<meta name="viewport" content="width=device-width">
+		<title> Practica 3 Quizz </title>
+
+	</head>
+
+	<body>
+		<h1> ¿Que Personaje de "The Witcher" eres? </h1>
+		<h3> Pregunta 4 </h3>
+
+		<form th:action="@{/Quiz4}" method="POST">
+
+			<p> ¿Que animal de estos es tu preferido? </p>
+			<input class="small" type="radio" name="animal" value="1"> Caballo <br>
+			<input class="small" type="radio" name="animal" value="2"> Lobo <br>
+			<input class="small" type="radio" name="animal" value="3"> Aguila <br>
+			<input class="small" type="radio" name="animal" value="4"> Lechuza <br>
+			<input class="small" type="radio" name="animal" value="5"> Burro <br>
+			<input class="small" type="radio" name="animal" value="6"> León <br>
+
+			<br>
+
+			<fieldset> 
+				<legend> Enviar Respuesta </legend>
+				<p> ¿Estás seguro de tú respuesta? </p>
+
+				<input type="Submit" value="Si">
+				<input type="Reset" value="No">
+			</fieldset>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org" lang='es' xml:lang="es">
+
+	<head>
+
+		<meta charset='utf-8'> 
+		<meta name="author" content="Erick José Jáquez Encarnación">
+		<link rel="stylesheet" th:href="@{/css/bootstrap(Sketchy).css}">
+		<meta name="viewport" content="width=device-width">
+		<title> Practica 3 Quizz </title>
+
+	</head>
+
+	<body>
+		<h1> ¿Que Personaje de "The Witcher" eres? </h1>
+		<h3> Pregunta 5 </h3>
+
+		<form th:action="@{/Quiz5}" method="POST">
+
+			<p> ¿Si te fueras de viaje en una aventura que compañero de viaje prefeririás? </p>
+			<select name="compañero">
+				<option> Escoge una respuesta
+				<option value="1"> Tu pareja <br>
+				<option value="2"> Cuanta más gente mejor <br>
+				<option value="3"> Gente de confianza <br>
+				<option value="4"> Un amigo cercano <br>
+				<option value="5"> Un animal como un perro o un caballo <br>
+				<option value="6"> Solo se esta bien <br>
+			</select>
+
+
+			<br>
+
+			<fieldset> 
+				<legend> Enviar Respuesta </legend>
+				<p> ¿Estás seguro de tú respuesta? </p>
+
+				<input type="Submit" value="Si">
+				<input type="Reset" value="No">
+			</fieldset>
+		</form>
+	</body>
+</html>

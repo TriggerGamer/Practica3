@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org" lang='es' xml:lang="es">
+
+	<head>
+
+		<meta charset='utf-8'> 
+		<meta name="author" content="Erick José Jáquez Encarnación">
+		<link rel="stylesheet" th:href="@{/css/bootstrap(Sketchy).css}">
+		<meta name="viewport" content="width=device-width">
+		<title> Practica 3 Quizz </title>
+
+	</head>
+
+	<body>
+		<h1> ¿Que Personaje de "The Witcher" eres? </h1>
+		<h3> Pregunta 1 </h3>
+		<form th:action="@{/Quiz1}" method="POST">
+
+			<p> ¿Cuál o Cuáles de estos géneros de péliculas te gustan más? </p>
+			<input class="small" type="checkbox" name="accion" value="1"> Acción <br>
+			<input class="small" type="checkbox" name="aventura" value="1"> Aventura <br>
+			<input class="small" type="checkbox" name="ciencia" value="1"> Ciencia Ficción <br>
+			<input class="small" type="checkbox" name="fantasia" value="1"> Fantasía <br>
+			<input class="small" type="checkbox" name="suspense" value="1"> Suspense <br>
+			<input class="small" type="checkbox" name="terror" value="1"> Terror <br>
+
+			<br>
+
+			<fieldset> 
+				<legend> Enviar Respuesta </legend>
+				<p> ¿Estás seguro de tú respuesta? </p>
+
+				<input type="Submit" value="Si">
+				<input type="Reset" value="No">
+			</fieldset>
+		</form>
+	</body>
+</html>
