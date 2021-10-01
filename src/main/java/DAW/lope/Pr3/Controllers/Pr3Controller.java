@@ -18,7 +18,7 @@ public class Pr3Controller {
 	 }
 
 	@RequestMapping(value="/Quiz", method=RequestMethod.POST)
-	public String quiz_post(Model modelo) {
+	public String quiz_post() {
 
  		return "redirect:/Quiz1";
 	 }
@@ -163,19 +163,19 @@ public class Pr3Controller {
 			}
 
 			session.setAttribute("narrativo", narrativo);
-			session.setAttribute("lirico)", lirico);
+			session.setAttribute("lirico", lirico);
 			session.setAttribute("dramatico", dramatico);
-			session.setAttribute("didactic", didactico);
+			session.setAttribute("didactico", didactico);
 		}
 		else {
 			narrativo = Nar;
 			session.setAttribute("narrativo", narrativo);
 			lirico = Lir;
-			session.setAttribute("lirico)", lirico);
+			session.setAttribute("lirico", lirico);
 			dramatico = Dra;
 			session.setAttribute("dramatico", dramatico);
 			didactico = Did;
-			session.setAttribute("didactic", didactico);
+			session.setAttribute("didactico", didactico);
 		}
 		
 		return "redirect:/Quiz3";
@@ -189,8 +189,21 @@ public class Pr3Controller {
 	 }	
 
 	@RequestMapping(value="/Quiz3", method=RequestMethod.POST)
-	public String quiz3_post() {
-
+	public String quiz3_post(HttpSession session,
+			@RequestParam (value = "paisajes") String Pas) {
+		
+		// Guardar los datos en la session de los resultados obetenidos
+		
+		String paisajes = (String) session.getAttribute("paisajes");
+		if (paisajes == null) {
+			paisajes = Pas;
+			session.setAttribute("paisajes", paisajes);
+		}
+		else {
+			paisajes = Pas;
+			session.setAttribute("paisajes", paisajes);
+		}
+		
 		return "redirect:/Quiz4";
 	}
 	
@@ -202,7 +215,20 @@ public class Pr3Controller {
 	 }	
 
 	@RequestMapping(value="/Quiz4", method=RequestMethod.POST)
-	public String quiz4_post() {
+	public String quiz4_post(HttpSession session,
+			@RequestParam (value = "animal") String Ani) {
+		
+		// Guardar los datos en la session de los resultados obetenidos
+		
+		String animal = (String) session.getAttribute("animal");
+		if (animal == null) {
+			animal = Ani;
+			session.setAttribute("animal", animal);
+		}
+		else {
+			animal = Ani;
+			session.setAttribute("animal", animal);
+		}
 
 		return "redirect:/Quiz5";
 	}
@@ -215,7 +241,25 @@ public class Pr3Controller {
 	 }	
 
 	@RequestMapping(value="/Quiz5", method=RequestMethod.POST)
-	public String quiz5_post() {
+	public String quiz5_post (HttpSession session,
+			@RequestParam (value = "compañero") String Comp) {
+		
+		// Guardar los datos en la session de los resultados obetenidos
+		
+		String compañero = (String) session.getAttribute("compañero");
+		if (compañero == null) {
+			if (Comp == null) {
+				compañero = "0";
+			}
+			else {
+				compañero = Comp;
+			}
+			session.setAttribute("compañero", compañero);
+		}
+		else {
+			compañero = Comp;
+			session.setAttribute("compañero", compañero);
+		}
 
 		return "redirect:/Quiz6";
 	}
@@ -228,8 +272,27 @@ public class Pr3Controller {
 	 }	
 
 	@RequestMapping(value="/Quiz6", method=RequestMethod.POST)
-	public String quiz6_post() {
-
+	public String quiz6_post(HttpSession session,
+			@RequestParam (value = "raza") String Raz) {
+		
+		// Guardar los datos en la session de los resultados obetenidos
+		
+		String raza = (String) session.getAttribute("raza");
+		if (raza == null) {
+			if (Raz == null) {
+				raza = "0";
+			}
+			else {
+				raza = Raz;
+			}
+			
+			session.setAttribute("raza", raza);
+		}
+		else {
+			raza = Raz;
+			session.setAttribute("raza", raza);
+		}
+				
 		return "redirect:/Quiz7";
 	}
 	
@@ -241,8 +304,20 @@ public class Pr3Controller {
 	 }	
 
 	@RequestMapping(value="/Quiz7", method=RequestMethod.POST)
-	public String quiz7_post(Model modelo, HttpSession session) {
+	public String quiz7_post(HttpSession session,
+			@RequestParam (value = "hobbys") String Hob) {
 		
+		// Guardar los datos en la session de los resultados obetenidos
+		
+		String hobbys = (String) session.getAttribute("hobbys");
+		if (hobbys == null) {
+			hobbys = Hob;
+			session.setAttribute("hobbys", hobbys);
+		}
+		else {
+			hobbys = Hob;
+			session.setAttribute("hobbys", hobbys);
+		}
 		
 		return "redirect:/QuizResultados";
 	}
@@ -273,10 +348,11 @@ public class Pr3Controller {
 		modelo.addAttribute("accion", sumaP1);
 
 		return "QuizResultados";
-	 }	
+	 }
 
 	@RequestMapping(value="/QuizResultados", method=RequestMethod.POST)
 	public String quizResultados_post() {
+		
 		return "QuizResultados";
 	}
 }
