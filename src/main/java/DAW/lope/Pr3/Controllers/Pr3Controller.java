@@ -49,66 +49,61 @@ public class Pr3Controller {
 		String terror = (String) session.getAttribute("terror");
 		
 		// Todo es codigo repetitivo es necesario para la correcta obtención de datos
-		if (accion == null || aventura == null || ciencia == null || fantasia == null || suspense == null || terror == null) {
-
-			if (Acc == null) {
-				accion = "0";
-			}
-			else {
-				accion = Acc;
-			}
-			if (Avt == null) {
-				aventura = "0";
-			}
-			else {
-				aventura = Avt;
-			}
-			if (Cnf == null) {
-				ciencia = "0";
-			}
-			else {
-				ciencia = Cnf;
-			}
-			if (Fan == null) {
-				fantasia = "0";
-			}
-			else {
-				fantasia = Fan;
-			}
-			if (Sus == null) {
-				suspense = "0";
-			}
-			else {
-				suspense = Sus;
-			}
-			if (Ter == null) {
-				terror = "0";
-			}
-			else {
-				terror = Ter;
-			}
-
-			session.setAttribute("accion", accion);
-			session.setAttribute("aventura", aventura);
-			session.setAttribute("ciencia", ciencia);
-			session.setAttribute("fantasia", fantasia);
-			session.setAttribute("suspense", suspense);
-			session.setAttribute("terror", terror);
+		
+		// Variable accion
+		if (Acc == null) {
+			accion = "0";
 		}
 		else {
 			accion = Acc;
-			session.setAttribute("accion", accion);
-			aventura = Avt;
-			session.setAttribute("aventura", aventura);
-			ciencia = Cnf;
-			session.setAttribute("ciencia", ciencia);
-			fantasia = Fan;
-			session.setAttribute("fantasia", fantasia);
-			suspense = Sus;
-			session.setAttribute("suspense", suspense);
-			terror = Ter;
-			session.setAttribute("terror", terror);
 		}
+		
+		// Variable aventura
+		if (Avt == null) {
+			aventura = "0";
+		}
+		else {
+			aventura = Avt;
+		}
+		
+		// Variable ciencia ficcion
+		if (Cnf == null) {
+			ciencia = "0";
+		}
+		else {
+			ciencia = Cnf;
+		}
+		
+		// Variable fantasia
+		if (Fan == null) {
+			fantasia = "0";
+		}
+		else  {
+			fantasia = Fan;
+		}
+		
+		// Variable suspense
+		if (Sus == null) {
+			suspense = "0";
+		}
+		else {
+			suspense = Sus;
+		}
+		
+		// Variable terror
+		if (Ter == null) {
+			terror = "0";
+		}
+		else {
+			terror = Ter;
+		}
+
+		session.setAttribute("accion", accion);
+		session.setAttribute("aventura", aventura);
+		session.setAttribute("ciencia", ciencia);
+		session.setAttribute("fantasia", fantasia);
+		session.setAttribute("suspense", suspense);
+		session.setAttribute("terror", terror);
 
  		return "redirect:/Quiz2";
 	 }
@@ -135,48 +130,43 @@ public class Pr3Controller {
 		String didactico = (String) session.getAttribute("didactico");
 				
 		// Todo es codigo repetitivo es necesario para la correcta obtención de datos
-		if (narrativo == null || lirico == null || dramatico == null || didactico == null) {
-
-			if (Nar == null) {
-				narrativo = "0";
-			}
-			else {
-				narrativo = Nar;
-			}
-			if (Lir == null) {
-				lirico = "0";
-			}
-			else {
-				lirico = Lir;
-			}
-			if (Dra == null) {
-				dramatico = "0";
-			}
-			else {
-				dramatico = Dra;
-			}
-			if (Did == null) {
-				didactico = "0";
-			}
-			else {
-				didactico = Did;
-			}
-
-			session.setAttribute("narrativo", narrativo);
-			session.setAttribute("lirico", lirico);
-			session.setAttribute("dramatico", dramatico);
-			session.setAttribute("didactico", didactico);
+		
+		// Variable narrativo
+		if (Nar == null) {
+			narrativo = "0";
 		}
 		else {
 			narrativo = Nar;
-			session.setAttribute("narrativo", narrativo);
-			lirico = Lir;
-			session.setAttribute("lirico", lirico);
-			dramatico = Dra;
-			session.setAttribute("dramatico", dramatico);
-			didactico = Did;
-			session.setAttribute("didactico", didactico);
 		}
+		
+		// Variable lirico
+		if (Lir == null) {
+			lirico = "0";
+		}
+		else {
+			lirico = Lir;
+		}
+		
+		// Variable dramatico
+		if (Dra == null) {
+			dramatico = "0";
+		}
+		else {
+			dramatico = Dra;
+		}
+		
+		// Variable Didactico
+		if (Did == null) {
+			didactico = "0";
+		}
+		else {
+			didactico = Did;
+		}
+
+		session.setAttribute("narrativo", narrativo);
+		session.setAttribute("lirico", lirico);
+		session.setAttribute("dramatico", dramatico);
+		session.setAttribute("didactico", didactico);
 		
 		return "redirect:/Quiz3";
 	}
@@ -195,6 +185,7 @@ public class Pr3Controller {
 		// Guardar los datos en la session de los resultados obetenidos
 		
 		String paisajes = (String) session.getAttribute("paisajes");
+		
 		if (paisajes == null) {
 			paisajes = Pas;
 			session.setAttribute("paisajes", paisajes);
@@ -326,6 +317,7 @@ public class Pr3Controller {
 	@RequestMapping(value="/QuizResultados", method=RequestMethod.GET)
 	public String quizResultados_get(Model modelo, HttpSession session) {
 		
+		// Atributos en session de Pregunta 1
 		String valorAcc = (String) session.getAttribute("accion");
 		String valorAvt = (String) session.getAttribute("aventura");
 		String valorCnf = (String) session.getAttribute("ciencia");
@@ -333,7 +325,29 @@ public class Pr3Controller {
 		String valorSus = (String) session.getAttribute("suspense");
 		String valorTer = (String) session.getAttribute("terror");
 		
-		int a,b,c,d,e,f;
+		// Atributos en session de Pregunta 2
+		String valorNar = (String) session.getAttribute("narrativo");
+		String valorLir = (String) session.getAttribute("lirico");
+		String valorDra = (String) session.getAttribute("dramatico");
+		String valorDid = (String) session.getAttribute("didactico");
+		
+		// Atributos en session de Pregunta 3
+		String valorPas = (String) session.getAttribute("paisajes");
+		
+		// Atributos en session de Pregunta 4
+		String valorAni = (String) session.getAttribute("animal");
+		
+		// Atributos en session de Pregunta 5
+		String valorRaz = (String) session.getAttribute("raza");
+		
+		// Atributos en session de Pregunta 6
+		String valorComp = (String) session.getAttribute("compañero");
+		
+		// Atributos en session de Pregunta 7
+		String valorHob = (String) session.getAttribute("hobbys");
+		
+		// Crear variables numéricas y asignar los valores de la session a estas parseando los datos para poder trabajar con ellos
+		int a, b, c, d, e, f, g, h, i, j, k, l, m, n, o;
 		
 		a = Integer.parseInt(valorAcc);
 		b = Integer.parseInt(valorAvt);
@@ -341,11 +355,33 @@ public class Pr3Controller {
 		d = Integer.parseInt(valorFan);
 		e = Integer.parseInt(valorSus);
 		f = Integer.parseInt(valorTer);
+		g = Integer.parseInt(valorNar);
+		h = Integer.parseInt(valorLir);
+		i = Integer.parseInt(valorDra);
+		j = Integer.parseInt(valorDid);
+		k = Integer.parseInt(valorPas);
+		l = Integer.parseInt(valorAni);
+		m = Integer.parseInt(valorRaz);
+		n = Integer.parseInt(valorComp);
+		o = Integer.parseInt(valorHob);
 		
-		int sumaP1 = a+b+c+d+e+f;
+		int sumaPlayer = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o;
+		String clasificacion = "";
 		
+		if(sumaPlayer <= 120 && sumaPlayer >= 0) {
+			clasificacion = "J";
+		}
+		else if(sumaPlayer <= 180 && sumaPlayer >= 121) {
+			clasificacion = "C";
+		}
+		else if(sumaPlayer <= 240 && sumaPlayer >= 181) {
+			clasificacion = "Y";
+		}
+		else if(sumaPlayer <= 300 && sumaPlayer >= 241) {
+			clasificacion = "G";
+		}
 		
-		modelo.addAttribute("accion", sumaP1);
+		modelo.addAttribute("clasificacion", clasificacion);
 
 		return "QuizResultados";
 	 }
