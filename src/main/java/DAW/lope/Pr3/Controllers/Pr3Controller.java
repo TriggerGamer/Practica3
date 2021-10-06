@@ -313,6 +313,9 @@ public class Pr3Controller {
 		return "redirect:/QuizResultados";
 	}
 	
+	//Métodos para meter y obtener cosas de la bds
+	
+	
 	// Métodos para los resultados
 	@RequestMapping(value="/QuizResultados", method=RequestMethod.GET)
 	public String quizResultados_get(Model modelo, HttpSession session) {
