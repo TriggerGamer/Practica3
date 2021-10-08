@@ -1,14 +1,21 @@
 package DAW.lope.Pr3.Controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import DAW.lope.Pr3.modelo.*;
 
 @Controller
 public class Pr3Controller {
+	
+	@Autowired
+	private PuntuacionesDao puntuacionesdao;
 	
 	// Métodos para la Portada
 	@RequestMapping(value="/Quiz", method=RequestMethod.GET)
@@ -320,6 +327,9 @@ public class Pr3Controller {
 	@RequestMapping(value="/QuizResultados", method=RequestMethod.GET)
 	public String quizResultados_get(Model modelo, HttpSession session) {
 		
+		//Declarar el objeto Puntuaciones
+		Puntuaciones pts = new Puntuaciones(1 , 0 , "");
+		
 		// Atributos en session de Pregunta 1
 		String valorAcc = (String) session.getAttribute("accion");
 		String valorAvt = (String) session.getAttribute("aventura");
@@ -372,19 +382,28 @@ public class Pr3Controller {
 		String clasificacion = "";
 		
 		if(sumaPlayer <= 120 && sumaPlayer >= 0) {
-			clasificacion = "J";
+			clasificacion = "Jaskier";
 		}
 		else if(sumaPlayer <= 180 && sumaPlayer >= 121) {
-			clasificacion = "C";
+			clasificacion = "Ciri";
 		}
 		else if(sumaPlayer <= 240 && sumaPlayer >= 181) {
-			clasificacion = "Y";
+			clasificacion = "Yennefer";
 		}
 		else if(sumaPlayer <= 300 && sumaPlayer >= 241) {
-			clasificacion = "G";
+			clasificacion = "Geralt";
 		}
 		
 		modelo.addAttribute("clasificacion", clasificacion);
+		
+		
+		pts.setPuntuacion(sumaPlayer);
+		pts.setPersonaje(clasificacion);
+		puntuacionesdao.save(pts);
+		
+		//Declarar la lista para obtener los datos
+		List<Puntuaciones> Puntos = puntuacionesdao.findAll();
+		modelo.addAttribute("puntos", Puntos);
 
 		return "QuizResultados";
 	 }
