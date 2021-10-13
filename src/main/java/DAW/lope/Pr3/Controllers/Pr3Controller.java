@@ -394,6 +394,7 @@ public class Pr3Controller {
 			clasificacion = "Geralt";
 		}
 		
+		modelo.addAttribute("pts", sumaPlayer);
 		modelo.addAttribute("clasificacion", clasificacion);
 		
 		
@@ -411,6 +412,6 @@ public class Pr3Controller {
 	@RequestMapping(value="/QuizResultados", method=RequestMethod.POST)
 	public String quizResultados_post() {
 		
-		return "QuizResultados";
+		return "redirect:/Quiz";
 	}
 }
