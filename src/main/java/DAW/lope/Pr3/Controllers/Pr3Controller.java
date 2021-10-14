@@ -25,8 +25,26 @@ public class Pr3Controller {
 	 }
 
 	@RequestMapping(value="/Quiz", method=RequestMethod.POST)
-	public String quiz_post() {
-
+	public String quiz_post(HttpSession session,
+			@RequestParam (value = "nombreUsuario") String nom) {
+		
+		// Guardar los datos en la session de los resultados obetenidos
+		
+		String usuario = (String) session.getAttribute("Usuario");
+		
+		if(nom.isBlank()) {
+			nom = "Default";
+		}
+				
+		if (usuario == null) {
+			usuario = nom;
+			session.setAttribute("Usuario", usuario);
+		}
+		else {
+			usuario = nom;
+			session.setAttribute("Usuario", usuario);
+		}
+		
  		return "redirect:/Quiz1";
 	 }
 	
@@ -328,7 +346,10 @@ public class Pr3Controller {
 	public String quizResultados_get(Model modelo, HttpSession session) {
 		
 		//Declarar el objeto Puntuaciones
-		Puntuaciones pts = new Puntuaciones(1 , 0 , "");
+		Puntuaciones pts = new Puntuaciones(1, "", 0, "");
+		
+		// Atributos en session de la portada el nombre de usuario
+		String nombreUsuario = (String) session.getAttribute("Usuario");
 		
 		// Atributos en session de Pregunta 1
 		String valorAcc = (String) session.getAttribute("accion");
@@ -394,10 +415,9 @@ public class Pr3Controller {
 			clasificacion = "Geralt";
 		}
 		
-		modelo.addAttribute("pts", sumaPlayer);
 		modelo.addAttribute("clasificacion", clasificacion);
 		
-		
+		pts.setNombreUsuario(nombreUsuario);
 		pts.setPuntuacion(sumaPlayer);
 		pts.setPersonaje(clasificacion);
 		puntuacionesdao.save(pts);

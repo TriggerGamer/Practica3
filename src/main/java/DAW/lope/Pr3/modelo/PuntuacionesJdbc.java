@@ -22,7 +22,7 @@ public class PuntuacionesJdbc implements PuntuacionesDao {
 	@Override
 	public int save(Puntuaciones pts) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.update("INSERT INTO Puntuaciones(Puntuacion, Personaje) VALUES(?,?)", pts.getPuntuacion(), pts.getPersonaje());
+		return jdbcTemplate.update("INSERT INTO Puntuaciones(nombreUsuario, Puntuacion, Personaje) VALUES(?,?,?)", pts.getNombreUsuario(), pts.getPuntuacion(), pts.getPersonaje());
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class PuntuacionesJdbc implements PuntuacionesDao {
 	@Override
 	public List<Puntuaciones> findAll() {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.query("SELECT * FROM Puntuaciones ORDER BY id_Usuario DESC LIMIT 5", (rs, rowNum) -> new Puntuaciones(rs.getInt("id_Usuario"), rs.getInt("Puntuacion"), rs.getString("Personaje")));
+		return jdbcTemplate.query("SELECT * FROM Puntuaciones ORDER BY id_Usuario DESC LIMIT 5", (rs, rowNum) -> new Puntuaciones(rs.getInt("id_Usuario"), rs.getString("nombreUsuario"), rs.getInt("Puntuacion"), rs.getString("Personaje")));
 	}
 
 	@Override

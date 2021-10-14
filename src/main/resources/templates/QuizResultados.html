@@ -15,27 +15,36 @@
 		<h3> Resultados: </h3>
 
 		<form th:action="@{/QuizResultados}" method="POST">
-			<div th:if="${clasificacion} == 'Jaskier'"> <img class="portada" th:src="@{/img/Jaskier.jpg}" alt="Foto de Jaskier personaje de 'The Wicther'"> </img> <p> Eres Jaskier 'El trovador' ( pts: <span th:text="${pts}"></span> ) </p> </div>
-			<div th:if="${clasificacion} == 'Ciri'"> <img class="portada" th:src="@{/img/Ciri-The-Witcher.jpg}" alt="Foto de Cirila personaje de 'The Wicther'"> </img> <p> Eres Cirila de cintra 'La leoncilla de cintra' ( pts: <span th:text="${pts}"></span> ) </p> </div>
-			<div th:if="${clasificacion} == 'Yennefer'"> <img class="portada" th:src="@{/img/Yennefer.jpg}" alt="Foto de Yennefer personaje de 'The Wicther'"> </img> <p> Eres Yennefer de Vengerberg 'La hechicera' ( pts: <span th:text="${pts}"></span> ) </p> </div>
-			<div th:if="${clasificacion} == 'Geralt'"> <img class="portada" th:src="@{/img/Geralt-de-Rivia.png}" alt="Foto de Geralt de Rivia personaje de 'The Wicther'"> </img> <p> Eres Geralt de Rivia 'El Brujo' ( pts: <span th:text="${pts}"></span> ) </p> </div>
+			<div th:if="${clasificacion} == 'Jaskier'"> <img class="portada" th:src="@{/img/Jaskier.jpg}" alt="Foto de Jaskier personaje de 'The Wicther'"> </img> <p> Eres Jaskier 'El trovador' </p> </div>
+			<div th:if="${clasificacion} == 'Ciri'"> <img class="portada" th:src="@{/img/Ciri-The-Witcher.jpg}" alt="Foto de Cirila personaje de 'The Wicther'"> </img> <p> Eres Cirila de cintra 'La leoncilla de cintra' </p> </div>
+			<div th:if="${clasificacion} == 'Yennefer'"> <img class="portada" th:src="@{/img/Yennefer.jpg}" alt="Foto de Yennefer personaje de 'The Wicther'"> </img> <p> Eres Yennefer de Vengerberg 'La hechicera' </p> </div>
+			<div th:if="${clasificacion} == 'Geralt'"> <img class="portada" th:src="@{/img/Geralt-de-Rivia.png}" alt="Foto de Geralt de Rivia personaje de 'The Wicther'"> </img> <p> Eres Geralt de Rivia 'El Brujo' </p> </div>
 			
 			<br>
 			 
 			<h4> Ultimas 5 puntuaciones obtenidas por usuarios </h4>
 			
 			<tr>
-			 <td class="small"> Puntuación </td>
-			 <td class="small"> Personaje </td>
-			 <br>
+				<td> [ </td>
+			 	<td class="small" > Usuario </td>
+			 	<td> ] </td>
+			 	<td> || </td>
+			 	<td> [ </td>
+			 	<td class="small"> Personaje </td>
+			 	<td> ] </td>
+			 	<br>
 			</tr>	
 			
 			<tr th:each="punto: ${puntos}">
-				<td class="small" th:text="${punto.puntuacion}" />
-			 	<td class="small" th:text="${punto.personaje}" /> 
+				<td> [ </td>
+				<td class="small" th:text="${punto.nombreUsuario}" />
+				<td> ] </td>
+				<td> || </td>
+				<td> [ </td>
+			 	<td class="small" th:text="${punto.Personaje}" />
+			 	<td> ] </td>
 			 	<br>
 			</tr>
-			
 			<br>
 			
 			<button class="bg-danger text-white" type="submit"> Volver a realizar el Quiz </button>

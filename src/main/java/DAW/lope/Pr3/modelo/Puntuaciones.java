@@ -3,11 +3,15 @@ package DAW.lope.Pr3.modelo;
 
 public class Puntuaciones {
 	private int id_Usuario;
+	private String nombreUsuario;
 	private int puntuacion;
 	private String personaje;
 	
-	public Puntuaciones(int id_usuario, int puntuacion, String personaje) {
+	public Puntuaciones() {}
+	
+	public Puntuaciones(int id_usuario, String nombreUsuario, int puntuacion, String personaje) {
 		this.id_Usuario = id_usuario;
+		this.nombreUsuario = nombreUsuario;
 		this.puntuacion = puntuacion;	
 		this.personaje = personaje;
 	}
@@ -35,6 +39,14 @@ public class Puntuaciones {
 
 	public void setPersonaje(String personaje) {
 		this.personaje = personaje;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 }
