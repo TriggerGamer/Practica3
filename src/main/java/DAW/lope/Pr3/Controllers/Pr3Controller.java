@@ -21,7 +21,7 @@ public class Pr3Controller {
 	@RequestMapping(value="/Quiz", method=RequestMethod.GET)
 	public String quiz_get() {
 
-		return "PortadaQuiz";
+		return "index";
 	 }
 
 	@RequestMapping(value="/Quiz", method=RequestMethod.POST)
